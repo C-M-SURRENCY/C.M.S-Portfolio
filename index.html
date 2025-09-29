@@ -3,100 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STŌN | The Final Peer Group</title>
+    <title>cayden surrency | computer engineering & it</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter font for clean body text -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Define a sophisticated serif for main titles and a precise sans for body */
-        .font-serif-luxury {
-            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-            letter-spacing: 0.35em; /* Increased spacing for maximum impact and demand */
-        }
-        body {
+        /* Import Inter for body/sans and Roboto Mono for the classic terminal aesthetic */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght[*400;700&display=swap');
+        
+        .font-sans {
             font-family: 'Inter', sans-serif;
-            background-color: #0d0d0c; /* Deep, near-black slate */
-            color: #f5f5f5; /* Bone White text for high contrast luxury */
         }
-        .container-padding {
-            /* Maximize vertical negative space */
-            padding-top: 15vh;
-            padding-bottom: 15vh;
+        /* New Code Font: Roboto Mono for a classic terminal look */
+        .font-code-unique {
+            /* Prioritize Roboto Mono for a classic terminal feel, using Ubuntu Mono as a common system fallback */
+            font-family: 'Roboto Mono', 'Ubuntu Mono', monospace;
+            letter-spacing: 0.05em; /* Subtle spacing to enhance code look */
+        }
+        
+        /* Custom color definitions for high-contrast black/white theme */
+        :root {
+            --color-bg-primary: #000000;
+            --color-text-primary: #FFFFFF;
+            --color-card-bg: #0A0A0A; /* Very dark grey for card depth */
+            --color-accent: #FFFFFF; /* Pure white accent */
         }
 
-        /* Custom Brass Color for Quiet Luxury Accent */
-        .color-brass {
-            color: #A47E3D;
+        .bg-primary { background-color: var(--color-bg-primary); }
+        .text-primary { color: var(--color-text-primary); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .text-accent { color: var(--color-accent); }
+        .border-accent { border-color: var(--color-accent); }
+        .border-subtle { border-color: rgba(255, 255, 255, 0.1); }
+        
+        /* Keyframe for subtle slide-in/fade-up animation */
+        @keyframes slide-up-fade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Custom hover effect for a more distinguished CTA */
-        .cta-button {
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0);
-            border-radius: 8px;
-            /* Applying brass color to border and text by default */
-            border: 1px solid #A47E3D;
-            color: #A47E3D;
+        /* Keyframes for subtle parallax float effect in the background */
+        @keyframes background-float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50%, -50%); }
         }
-        .cta-button:hover {
-            transform: scale(1.03); /* Subtle scale */
-            box-shadow: 0 0 15px rgba(164, 126, 61, 0.6); /* Muted brass glow */
-            background-color: #A47E3D;
-            color: #0d0d0c; /* Near-black text on hover */
+        
+        /* Utility classes for staggered animation effects */
+        .animate-slide-up-1 {
+            animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+        }
+        .animate-slide-up-2 {
+            animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+        }
+        .animate-slide-up-3 {
+            animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+        }
+        .animate-slide-up-4 {
+            animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards;
+        }
+        /* Ensure animated items are invisible before they start */
+        .animated-item { opacity: 0; }
+        
+        /* Blinking Block Cursor Animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .cursor-block {
+            display: inline-block;
+            width: 0.6em; /* Width slightly less than a character */
+            height: 1.1em; /* Height of the font line */
+            background-color: white;
+            margin-left: 0.1em;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#FFFFFF',
+                        'black-bg': '#000000',
+                        'card-bg': '#0A0A0A',
+                        'accent-subtle': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        // Define the code mono font for specific use
+                        code: ['Roboto Mono', 'Ubuntu Mono', 'monospace'], 
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="min-h-screen flex flex-col justify-between items-center antialiased">
 
-    <!-- Header (Minimal Branding - Kept but refined) -->
-    <header class="w-full text-center p-8">
-        <h1 class="font-serif-luxury text-xl font-light uppercase tracking-widest text-gray-500">
-            S T Ō N
-        </h1>
+<body class="bg-black-bg text-white min-h-screen font-sans antialiased">
+
+    <!-- PARALLAX BACKGROUND LAYER (Fixed position, subtle animated dots/grid) -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] bg-black-bg">
+        <!-- Dot/Star Field Effect Container -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div id="parallax-dots" class="absolute inset-0" style="
+                /* Create a huge container (200% x 200%) to allow for movement */
+                width: 200%; 
+                height: 200%;
+                top: -50%;
+                left: -50%;
+                /* Subtle pattern of white dots */
+                background-image: radial-gradient(white 1px, transparent 1px);
+                background-size: 80px 80px;
+                opacity: 0.05;
+                /* Apply slow floating animation */
+                animation: background-float 120s linear infinite;
+            "></div>
+        </div>
+    </div>
+    <!-- END PARALLAX BACKGROUND LAYER -->
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-black-bg/95 backdrop-blur-sm border-b border-white/10">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            
+            <!-- Logo: Initials "CS" (Name text removed per user request) -->
+            <a href="#home" class="inline-flex items-center text-white hover:text-gray-300 transition duration-300 animated-item animate-slide-up-1">
+                
+                <!-- SVG Logo: Initials "CS" for Cayden Surrency -->
+                <svg width="28" height="28" viewBox="0 0 100 100" class="w-7 h-7">
+                    <!-- Text element for the initials -->
+                    <text x="50" y="65" 
+                          font-family="monospace, sans-serif" 
+                          font-size="60" 
+                          font-weight="700" 
+                          fill="white" 
+                          text-anchor="middle"
+                          class="select-none">
+                        CS
+                    </text>
+                </svg>
+            </a>
+
+            <div class="space-x-8 hidden md:flex font-light text-sm animated-item animate-slide-up-2">
+                <a href="#expertise" class="text-white hover:text-gray-400 transition duration-300">Expertise</a>
+                <a href="#experience" class="text-white hover:text-gray-400 transition duration-300">Experience</a>
+                <a href="#education" class="text-white hover:text-gray-400 transition duration-300">Education</a>
+                <a href="#contact" class="text-white hover:text-gray-400 transition duration-300">Connect</a>
+            </div>
+        </nav>
     </header>
 
-    <!-- Main High-Stakes Content Area (Centered) -->
-    <main class="flex-grow w-full max-w-xl flex flex-col justify-center items-center px-4 container-padding">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 relative z-10">
 
-        <!-- Large, COMMANDING Title: Focused on structure and finality -->
-        <h2 class="text-5xl md:text-7xl font-serif-luxury font-light uppercase tracking-widest text-center mb-8 text-white leading-tight">
-            THE UNASSAILABLE FOUNDATION.
-        </h2>
+        <!-- 1. Hero Section (High Contrast Focus) -->
+        <section id="home" class="py-16 md:py-32 flex flex-col items-center justify-center text-center">
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-3 animated-item animate-slide-up-1">Portfolio</p>
+            
+            <!-- Monospaced/Code Title with Blinking Cursor and Lowercase -->
+            <h1 class="text-6xl sm:text-8xl font-extrabold text-white leading-tight mb-6 tracking-tight font-code-unique animated-item animate-slide-up-2 lowercase">
+                cayden surrency<span class="cursor-block"> </span>
+            </h1>
+            
+            <h2 class="text-2xl font-light text-gray-300 mb-10 max-w-4xl animated-item animate-slide-up-3">
+                Computer Engineering & IT Specialist with a focus on <strong>End-User Computer Hardware Innovation</strong>
+            </h2>
+            
+            <div class="text-xl max-w-2xl border-l-4 border-white pl-6 mx-auto animated-item animate-slide-up-4">
+                <p class="italic text-white/90">
+                    A mission to innovate and optimize technology at high-impact companies such as Google, Intel, and Microsoft.
+                </p>
+            </div>
+            
+            <div class="mt-12 animated-item animate-slide-up-4">
+                <a href="#expertise" class="inline-flex items-center space-x-3 px-8 py-4 border border-white text-white font-semibold tracking-wider rounded-lg hover:bg-white hover:text-black-bg transition duration-300 shadow-lg shadow-white/10">
+                    View Core Expertise
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </section>
 
-        <!-- Minimalist, High-Impact Body Copy -->
-        <p class="text-lg md:text-xl text-center font-light leading-relaxed mb-4 max-w-lg text-gray-400">
-            Wealth requires structure. This is the definitive architecture for absolute, generational leverage.
-        </p>
-        <p class="text-lg md:text-xl text-center font-light leading-relaxed mb-12 max-w-lg text-gray-400">
-            The cost of operating outside this circle is measured in **opportunity**. The exclusion of the common is the price of entry.
-        </p>
+        <!-- Divider -->
+        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
 
-        <!-- Scarcity Statement: Mysterious and definitive (text-center added here) -->
-        <p class="text-sm tracking-widest uppercase mb-4 font-medium text-center" style="color: #A47E3D;">
-            ACCESS IS GOVERNED BY A STRICTLY PRIVATE CHARTER. CAPACITY IS CLOSED UPON SATISFACTION OF THE COMMITTEE.
-        </p>
+        <!-- 2. Expertise (Skills) Section -->
+        <section id="expertise" class="py-16">
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4 animated-item animate-slide-up-1">01 | Core Expertise</p>
+            <!-- Lowercase Title -->
+            <h3 class="text-4xl font-semibold text-white mb-12 animated-item animate-slide-up-2 lowercase">technical & professional proficiencies</h3>
 
-        <!-- Access Request CTA: The final, high-stakes decision -->
-        <a href="#" class="cta-button inline-block py-4 px-12 uppercase text-lg tracking-widest font-medium rounded-lg">
-            ASSURE GENERATIONAL LEVERAGE
-        </a>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 animated-item animate-slide-up-3">
+                
+                <!-- Category 1: Systems & Hardware -->
+                <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="server" class="w-6 h-6 text-white mr-3"></i>
+                        <h4 class="text-xl font-semibold text-white">Systems & Hardware</h4>
+                    </div>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li>Advanced operation of <strong>MacOS, Windows, and Linux</strong></li>
+                        <li>Comprehensive <strong>Device Repair</strong> capability (personal workshop & iFixit toolkit)</li>
+                        <li>Experience in <strong>Electrical Installation and Wiring</strong></li>
+                        <li>Specialized knowledge in device jailbreaking (e.g., checkra1n)</li>
+                    </ul>
+                </div>
 
-        <!-- Status Tag: Refined status, now showing exclusion -->
-        <div class="mt-12">
-            <span class="text-xs tracking-wider px-3 py-1 rounded-full uppercase font-medium border border-gray-700 text-gray-500">
-                STATUS: EXCLUDED.
-            </span>
-        </div>
+                <!-- Category 2: Software & Productivity -->
+                <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="monitor" class="w-6 h-6 text-white mr-3"></i>
+                        <h4 class="text-xl font-semibold text-white">Software & Digital Tools</h4>
+                    </div>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><strong>Certified in Excel</strong> and proficient in <strong>Microsoft 365</strong> (Word, PowerPoint, Outlook)</li>
+                        <li>Expertise in <strong>Google Workspace</strong> (Admin, Docs, Sheets, Drive)</li>
+                        <li>Proficient in <strong>Adobe Suite</strong> (Photoshop, Premiere, Illustrator)</li>
+                        <li>Fundamentals in <strong>Python</strong> and <strong>Cybersecurity</strong></li>
+                    </ul>
+                </div>
 
+                <!-- Category 3: Professional & Management -->
+                <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="users" class="w-6 h-6 text-white mr-3"></i>
+                        <h4 class="text-xl font-semibold text-white">Professional Acumen</h4>
+                    </div>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li>Proven ability in <strong>Effective Customer Communication</strong> and service</li>
+                        <li>Experience with client-side <strong>Marketing Management</strong> and sales closure</li>
+                        <li>Strong aptitude for <strong>Troubleshooting</strong> and <strong>Teamwork</strong></li>
+                        <li>Certified in <strong>CPR and AED</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+
+        <!-- 3. Experience Section -->
+        <section id="experience" class="py-16">
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4 animated-item animate-slide-up-1">02 | Track Record</p>
+            <!-- Lowercase Title -->
+            <h3 class="text-4xl font-semibold text-white mb-12 animated-item animate-slide-up-2 lowercase">select professional engagements</h3>
+
+            <div class="space-y-12 animated-item animate-slide-up-3">
+                
+                <!-- Experience Item 1: IT Support -->
+                <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <h4 class="text-2xl font-semibold text-white">IT Support Specialist</h4>
+                        <p class="text-gray-400 font-sans text-sm mt-1 sm:mt-0">Saint Francis Catholic Academy</p>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400 text-base ml-2">
+                        <li>Instrumental in achieving official <strong>Apple Certification</strong> for the organization.</li>
+                        <li>Managed and resolved IT tickets, complaints, and device issues using ticket management software.</li>
+                        <li>Performed deep-level device repair on Macbooks, iPads, and iPhones (spanning 2004 models to present).</li>
+                        <li>Organized and maintained <strong>wiring and server rooms</strong> and managed technology inventory.</li>
+                        <li>Collaborated with Apple staff on <strong>Admin management</strong> and software distribution.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item 2: Customer Service/Sales -->
+                <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <h4 class="text-2xl font-semibold text-white">Customer Service & Sales Representative</h4>
+                        <p class="text-gray-400 font-sans text-sm mt-1 sm:mt-0">Better Care Transport</p>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400 text-base ml-2">
+                        <li>Executed direct customer orders, payments, and financial transactions.</li>
+                        <li>Successfully <strong>closed product and service sales</strong> and managed client-side marketing.</li>
+                        <li>Maintained ongoing communication and support for valued clients and customer complaints.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Divider -->
+        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+
+        <!-- 4. Education Section -->
+        <section id="education" class="py-16">
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4 animated-item animate-slide-up-1">03 | Academic Background</p>
+            <!-- Lowercase Title -->
+            <h3 class="text-4xl font-semibold text-white mb-12 animated-item animate-slide-up-2 lowercase">formal study & achievements</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animated-item animate-slide-up-3">
+                
+                <!-- Education Item 1: UCF -->
+                <div class="bg-card p-6 rounded-xl border border-white/10">
+                    <h4 class="text-2xl font-semibold text-white mb-2">University of Central Florida</h4>
+                    <p class="text-gray-400 font-sans text-sm mb-4">Bachelor of Science, Computer Engineering (Minor in Design)</p>
+                    <p class="text-gray-400">
+                        Focusing on core engineering principles with an emphasis on design. Current studies include Python, cybersecurity fundamentals, and a focus on operating systems.
+                    </p>
+                </div>
+
+                <!-- Education Item 2: SFCA -->
+                <div class="bg-card p-6 rounded-xl border border-white/10">
+                    <h4 class="text-2xl font-semibold text-white mb-2">Saint Francis Catholic Academy</h4>
+                    <p class="text-gray-400 font-sans text-sm mb-4">High School Diploma (Graduated Cum Laude)</p>
+                    <p class="text-gray-400">
+                        Completed multiple Advanced Placement (AP) classes while serving as <strong>Officer/Webmaster of the Latin Club</strong> and an active member of the Robotics, Technology, and Photojournalism clubs.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+
+        <!-- 5. Contact & GitHub CTA -->
+        <section id="contact" class="py-16 text-center animated-item animate-slide-up-1">
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">04 | Connect</p>
+            <!-- Lowercase Title -->
+            <h3 class="text-4xl font-semibold text-white mb-6 lowercase">explore the codebase</h3>
+
+            <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                My professional work and personal projects are hosted on GitHub, showcasing my technical execution and commitment to clean, efficient code.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                
+                <!-- GitHub Button -->
+                <button onclick="document.getElementById('github-url-modal').classList.remove('hidden')"
+                    class="inline-flex items-center justify-center space-x-2 px-8 py-4 bg-white text-black-bg font-semibold tracking-wider rounded-lg shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-[1.02]">
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                    <span>Visit GitHub Portfolio</span>
+                </button>
+
+                <!-- Email Link -->
+                <a href="mailto:c.m.surrency@gmail.com"
+                    class="inline-flex items-center justify-center space-x-2 px-8 py-4 border border-white text-white font-semibold tracking-wider rounded-lg hover:bg-white/10 transition duration-300">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                    <span>c.m.surrency@gmail.com</span>
+                </a>
+            </div>
+            <p class="text-sm text-gray-500 mt-4">(352) 581 2963 | 12761 Orpington St, 32826</p>
+        </section>
+        
     </main>
-
-    <!-- Footer (Metadata) -->
-    <footer class="w-full text-center p-8 border-t border-gray-800">
-        <p class="text-xs tracking-wider text-gray-600">
-            © 2025. STŌN Collective. All Rights Reserved. V: $3.14M
-        </p>
+    
+    <!-- Custom Modal for GitHub URL (Since we don't know the URL) -->
+    <div id="github-url-modal" class="fixed inset-0 bg-black bg-opacity-80 z-[100] flex items-center justify-center hidden">
+        <div class="bg-card p-8 rounded-xl max-w-sm w-full text-center shadow-2xl border border-white/50">
+            <h4 class="text-2xl font-semibold text-white mb-4">GitHub Link</h4>
+            <p class="text-gray-300 mb-6">Please replace this placeholder with your actual GitHub URL when deploying.</p>
+            <p class="text-sm text-gray-400 bg-black-bg p-3 rounded-lg break-all mb-6 border border-white/10">
+                [YOUR_GITHUB_URL_HERE]
+            </p>
+            <button onclick="document.getElementById('github-url-modal').classList.add('hidden')"
+                class="px-6 py-2 bg-white text-black-bg rounded-lg hover:bg-gray-200 transition duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="bg-card border-t border-white/10 mt-10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-gray-600">
+            <p>&copy; 2025 Cayden Surrency. All Rights Reserved. | Designed with Vercel-inspired minimalism.</p>
+        </div>
     </footer>
 
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
