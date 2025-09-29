@@ -1,96 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STŌN | The Final Peer Group</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font for clean body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a sophisticated serif for main titles and a precise sans for body */
+        .font-serif-luxury {
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            letter-spacing: 0.35em; /* Increased spacing for maximum impact and demand */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0c; /* Deep, near-black slate */
+            color: #f5f5f5; /* Bone White text for high contrast luxury */
+        }
+        .container-padding {
+            /* Maximize vertical negative space */
+            padding-top: 15vh;
+            padding-bottom: 15vh;
+        }
+
+        /* Custom Brass Color for Quiet Luxury Accent */
+        .color-brass {
+            color: #A47E3D;
+        }
+
+        /* Custom hover effect for a more distinguished CTA */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+            border-radius: 8px;
+            /* Applying brass color to border and text by default */
+            border: 1px solid #A47E3D;
+            color: #A47E3D;
+        }
+        .cta-button:hover {
+            transform: scale(1.03); /* Subtle scale */
+            box-shadow: 0 0 15px rgba(164, 126, 61, 0.6); /* Muted brass glow */
+            background-color: #A47E3D;
+            color: #0d0d0c; /* Near-black text on hover */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center antialiased">
+
+    <!-- Header (Minimal Branding - Kept but refined) -->
+    <header class="w-full text-center p-8">
+        <h1 class="font-serif-luxury text-xl font-light uppercase tracking-widest text-gray-500">
+            S T Ō N
+        </h1>
+    </header>
+
+    <!-- Main High-Stakes Content Area (Centered) -->
+    <main class="flex-grow w-full max-w-xl flex flex-col justify-center items-center px-4 container-padding">
+
+        <!-- Large, COMMANDING Title: Focused on structure and finality -->
+        <h2 class="text-5xl md:text-7xl font-serif-luxury font-light uppercase tracking-widest text-center mb-8 text-white leading-tight">
+            THE UNASSAILABLE FOUNDATION.
+        </h2>
+
+        <!-- Minimalist, High-Impact Body Copy -->
+        <p class="text-lg md:text-xl text-center font-light leading-relaxed mb-4 max-w-lg text-gray-400">
+            Wealth requires structure. This is the definitive architecture for absolute, generational leverage.
+        </p>
+        <p class="text-lg md:text-xl text-center font-light leading-relaxed mb-12 max-w-lg text-gray-400">
+            The cost of operating outside this circle is measured in **opportunity**. The exclusion of the common is the price of entry.
+        </p>
+
+        <!-- Scarcity Statement: Mysterious and definitive (text-center added here) -->
+        <p class="text-sm tracking-widest uppercase mb-4 font-medium text-center" style="color: #A47E3D;">
+            ACCESS IS GOVERNED BY A STRICTLY PRIVATE CHARTER. CAPACITY IS CLOSED UPON SATISFACTION OF THE COMMITTEE.
+        </p>
+
+        <!-- Access Request CTA: The final, high-stakes decision -->
+        <a href="#" class="cta-button inline-block py-4 px-12 uppercase text-lg tracking-widest font-medium rounded-lg">
+            ASSURE GENERATIONAL LEVERAGE
+        </a>
+
+        <!-- Status Tag: Refined status, now showing exclusion -->
+        <div class="mt-12">
+            <span class="text-xs tracking-wider px-3 py-1 rounded-full uppercase font-medium border border-gray-700 text-gray-500">
+                STATUS: EXCLUDED.
+            </span>
+        </div>
+
+    </main>
+
+    <!-- Footer (Metadata) -->
+    <footer class="w-full text-center p-8 border-t border-gray-800">
+        <p class="text-xs tracking-wider text-gray-600">
+            © 2025. STŌN Collective. All Rights Reserved. V: $3.14M
+        </p>
+    </footer>
+
+</body>
 </html>
