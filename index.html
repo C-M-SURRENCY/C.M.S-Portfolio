@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Import Inter for body/sans and Roboto Mono for the classic terminal aesthetic */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght=400;700&display=swap');
         
         .font-sans {
             font-family: 'Inter', sans-serif;
@@ -43,7 +43,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Utility classes for staggered animation effects */
+        /* Utility classes for staggered animation effects (KEPT for Hero Section only) */
         .animate-slide-up-1 {
             animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
         }
@@ -59,7 +59,7 @@
         /* Ensure animated items are invisible before they start */
         .animated-item { opacity: 0; }
         
-        /* Blinking Block Cursor Animation */
+        /* Blinking Block Cursor Animation - Reverted to permanent visibility */
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
@@ -72,7 +72,10 @@
             margin-left: 0.1em;
             vertical-align: middle;
             animation: blink 1s step-end infinite;
+            /* Default opacity is now 1, allowing the animation to handle blinking */
         }
+        
+        /* Removed all .section-title-hover-effect CSS */
     </style>
     <script>
         tailwind.config = {
@@ -118,10 +121,11 @@
 
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-black-bg/95 backdrop-blur-sm border-b border-white/10">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <!-- Kept initial slide-in for cleaner load -->
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center animated-item animate-slide-up-1">
             
             <!-- Logo: Initials "CS" -->
-            <a href="#home" class="inline-flex items-center text-white hover:text-gray-300 transition duration-300 animated-item animate-slide-up-1">
+            <a href="#home" class="inline-flex items-center text-white hover:text-gray-300 transition duration-300">
                 
                 <!-- SVG Logo: Initials "CS" for Cayden Surrency -->
                 <svg width="28" height="28" viewBox="0 0 100 100" class="w-7 h-7">
@@ -138,7 +142,7 @@
                 </svg>
             </a>
 
-            <div class="space-x-8 hidden md:flex font-light text-sm animated-item animate-slide-up-2">
+            <div class="space-x-8 hidden md:flex font-light text-sm">
                 <a href="#expertise" class="text-white hover:text-gray-400 transition duration-300">Expertise</a>
                 <a href="#experience" class="text-white hover:text-gray-400 transition duration-300">Experience</a>
                 <a href="#education" class="text-white hover:text-gray-400 transition duration-300">Education</a>
@@ -149,17 +153,17 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 relative z-10">
 
-        <!-- 1. Hero Section (High Contrast Focus) -->
+        <!-- 1. Hero Section (Kept all animations here for a unified entrance) -->
         <section id="home" class="py-16 md:py-32 flex flex-col items-center justify-center text-center">
             <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-3 animated-item animate-slide-up-1">Portfolio</p>
             
-            <!-- Monospaced/Code Title with Blinking Cursor and Lowercase -->
+            <!-- H1: Monospaced/Code Title with PERMANENT Blinking Cursor -->
             <h1 class="text-6xl sm:text-8xl font-extrabold text-white leading-tight mb-6 tracking-tight font-code-unique animated-item animate-slide-up-2 lowercase">
                 cayden surrency<span class="cursor-block"> </span>
             </h1>
             
             <h2 class="text-2xl font-light text-gray-300 mb-10 max-w-4xl animated-item animate-slide-up-3">
-                Computer Engineering & IT Specialist with a focus on <strong>End-User Computer Hardware Innovation</strong>
+                Computer Engineering & IT Specialist with a focus on <span class="font-semibold text-white">End-User Computer Hardware Innovation</span>
             </h2>
             
             <div class="text-xl max-w-2xl border-l-4 border-white pl-6 mx-auto animated-item animate-slide-up-4">
@@ -176,16 +180,18 @@
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+        <!-- Divider - Animation removed -->
+        <div class="w-full h-px bg-white/10 my-20"></div>
 
-        <!-- 2. Expertise (Skills) Section -->
+        <!-- 2. Expertise (Skills) Section - Animation removed from content -->
         <section id="expertise" class="py-16">
-            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4 animated-item animate-slide-up-1">01 | Core Expertise</p>
-            <!-- Lowercase Title -->
-            <h3 class="text-4xl font-semibold text-white mb-12 animated-item animate-slide-up-2 lowercase">technical & professional proficiencies</h3>
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">01 | Core Expertise</p>
+            <!-- H3: Capitalized, animation and hover classes removed -->
+            <h3 class="text-4xl font-semibold text-white mb-12">
+                Technical & Professional Proficiencies
+            </h3>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 animated-item animate-slide-up-3">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 <!-- Category 1: Systems & Hardware -->
                 <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
@@ -231,16 +237,18 @@
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+        <!-- Divider - Animation removed -->
+        <div class="w-full h-px bg-white/10 my-20"></div>
 
-        <!-- 3. Experience Section -->
+        <!-- 3. Experience Section - Animation removed from content -->
         <section id="experience" class="py-16">
-            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4 animated-item animate-slide-up-1">02 | Track Record</p>
-            <!-- Lowercase Title -->
-            <h3 class="text-4xl font-semibold text-white mb-12 animated-item animate-slide-up-2 lowercase">select professional engagements</h3>
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">02 | Track Record</p>
+            <!-- H3: Capitalized, animation and hover classes removed -->
+            <h3 class="text-4xl font-semibold text-white mb-12">
+                Select Professional Engagements
+            </h3>
 
-            <div class="space-y-12 animated-item animate-slide-up-3">
+            <div class="space-y-12">
                 
                 <!-- Experience Item 1: IT Support -->
                 <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
@@ -272,16 +280,18 @@
             </div>
         </section>
         
-        <!-- Divider -->
-        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+        <!-- Divider - Animation removed -->
+        <div class="w-full h-px bg-white/10 my-20"></div>
 
-        <!-- 4. Education Section -->
+        <!-- 4. Education Section - Animation removed from content -->
         <section id="education" class="py-16">
-            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4 animated-item animate-slide-up-1">03 | Academic Background</p>
-            <!-- Lowercase Title -->
-            <h3 class="text-4xl font-semibold text-white mb-12 animated-item animate-slide-up-2 lowercase">formal study & achievements</h3>
+            <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">03 | Academic Background</p>
+            <!-- H3: Capitalized, animation and hover classes removed -->
+            <h3 class="text-4xl font-semibold text-white mb-12">
+                Formal Study & Achievements
+            </h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animated-item animate-slide-up-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 
                 <!-- Education Item 1: UCF -->
                 <div class="bg-card p-6 rounded-xl border border-white/10">
@@ -303,14 +313,16 @@
             </div>
         </section>
 
-        <!-- Divider -->
-        <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
+        <!-- Divider - Animation removed -->
+        <div class="w-full h-px bg-white/10 my-20"></div>
 
-        <!-- 5. Contact & Connect CTA -->
-        <section id="contact" class="py-16 text-center animated-item animate-slide-up-1">
+        <!-- 5. Contact & Connect CTA - Animation removed from content -->
+        <section id="contact" class="py-16 text-center">
             <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">04 | Connect</p>
-            <!-- Lowercase Title updated to focus on connecting -->
-            <h3 class="text-4xl font-semibold text-white mb-6 lowercase">let's connect</h3>
+            <!-- H3: Capitalized, animation and hover classes removed -->
+            <h3 class="text-4xl font-semibold text-white mb-6">
+                Let's Connect
+            </h3>
 
             <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
                 I'm actively seeking roles in Computer Hardware Engineering. Reach out directly via email or phone to discuss collaboration or opportunities.
@@ -333,7 +345,7 @@
     <!-- Footer -->
     <footer class="bg-card border-t border-white/10 mt-10 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-gray-600">
-            <p>&copy; 2025 Cayden Surrency. All Rights Reserved.</p>
+            <p>&copy; 2025 Cayden Surrency. All Rights Reserved. | Designed with Vercel-inspired minimalism.</p>
         </div>
     </footer>
 
