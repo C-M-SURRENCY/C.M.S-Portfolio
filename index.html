@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         /* Import Inter for body/sans and Roboto Mono for the classic terminal aesthetic */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght[*400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap');
         
         .font-sans {
             font-family: 'Inter', sans-serif;
@@ -41,12 +41,6 @@
         @keyframes slide-up-fade {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Keyframes for subtle parallax float effect in the background */
-        @keyframes background-float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-50%, -50%); }
         }
         
         /* Utility classes for staggered animation effects */
@@ -103,22 +97,20 @@
 
 <body class="bg-black-bg text-white min-h-screen font-sans antialiased">
 
-    <!-- PARALLAX BACKGROUND LAYER (Fixed position, subtle animated dots/grid) -->
+    <!-- PARALLAX BACKGROUND LAYER (Fixed position, scroll-controlled movement) -->
     <div class="fixed inset-0 pointer-events-none z-[-1] bg-black-bg">
         <!-- Dot/Star Field Effect Container -->
         <div class="absolute inset-0 overflow-hidden">
             <div id="parallax-dots" class="absolute inset-0" style="
-                /* Create a huge container (200% x 200%) to allow for movement */
+                /* We still use 200% size for a large background area, but positioned top-left */
                 width: 200%; 
                 height: 200%;
                 top: -50%;
                 left: -50%;
-                /* Subtle pattern of white dots */
+                /* Subtle pattern of white dots - Denser and slightly more visible now */
                 background-image: radial-gradient(white 1px, transparent 1px);
-                background-size: 80px 80px;
-                opacity: 0.05;
-                /* Apply slow floating animation */
-                animation: background-float 120s linear infinite;
+                background-size: 50px 50px;
+                opacity: 0.1;
             "></div>
         </div>
     </div>
@@ -128,7 +120,7 @@
     <header class="sticky top-0 z-50 bg-black-bg/95 backdrop-blur-sm border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
-            <!-- Logo: Initials "CS" (Name text removed per user request) -->
+            <!-- Logo: Initials "CS" -->
             <a href="#home" class="inline-flex items-center text-white hover:text-gray-300 transition duration-300 animated-item animate-slide-up-1">
                 
                 <!-- SVG Logo: Initials "CS" for Cayden Surrency -->
@@ -314,30 +306,23 @@
         <!-- Divider -->
         <div class="w-full h-px bg-white/10 my-20 animated-item animate-slide-up-1"></div>
 
-        <!-- 5. Contact & GitHub CTA -->
+        <!-- 5. Contact & Connect CTA -->
         <section id="contact" class="py-16 text-center animated-item animate-slide-up-1">
             <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">04 | Connect</p>
-            <!-- Lowercase Title -->
-            <h3 class="text-4xl font-semibold text-white mb-6 lowercase">explore the codebase</h3>
+            <!-- Lowercase Title updated to focus on connecting -->
+            <h3 class="text-4xl font-semibold text-white mb-6 lowercase">let's connect</h3>
 
             <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-                My professional work and personal projects are hosted on GitHub, showcasing my technical execution and commitment to clean, efficient code.
+                I'm actively seeking roles in Computer Hardware Engineering. Reach out directly via email or phone to discuss collaboration or opportunities.
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 
-                <!-- GitHub Button -->
-                <button onclick="document.getElementById('github-url-modal').classList.remove('hidden')"
-                    class="inline-flex items-center justify-center space-x-2 px-8 py-4 bg-white text-black-bg font-semibold tracking-wider rounded-lg shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-[1.02]">
-                    <i data-lucide="github" class="w-6 h-6"></i>
-                    <span>Visit GitHub Portfolio</span>
-                </button>
-
-                <!-- Email Link -->
+                <!-- Primary Email Link (Styling changed to be the primary CTA) -->
                 <a href="mailto:c.m.surrency@gmail.com"
-                    class="inline-flex items-center justify-center space-x-2 px-8 py-4 border border-white text-white font-semibold tracking-wider rounded-lg hover:bg-white/10 transition duration-300">
+                    class="inline-flex items-center justify-center space-x-2 px-8 py-4 bg-white text-black-bg font-semibold tracking-wider rounded-lg shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-[1.02]">
                     <i data-lucide="mail" class="w-6 h-6"></i>
-                    <span>c.m.surrency@gmail.com</span>
+                    <span>Send Me an Email</span>
                 </a>
             </div>
             <p class="text-sm text-gray-500 mt-4">(352) 581 2963 | 12761 Orpington St, 32826</p>
@@ -345,20 +330,7 @@
         
     </main>
     
-    <!-- Custom Modal for GitHub URL (Since we don't know the URL) -->
-    <div id="github-url-modal" class="fixed inset-0 bg-black bg-opacity-80 z-[100] flex items-center justify-center hidden">
-        <div class="bg-card p-8 rounded-xl max-w-sm w-full text-center shadow-2xl border border-white/50">
-            <h4 class="text-2xl font-semibold text-white mb-4">GitHub Link</h4>
-            <p class="text-gray-300 mb-6">Please replace this placeholder with your actual GitHub URL when deploying.</p>
-            <p class="text-sm text-gray-400 bg-black-bg p-3 rounded-lg break-all mb-6 border border-white/10">
-                [YOUR_GITHUB_URL_HERE]
-            </p>
-            <button onclick="document.getElementById('github-url-modal').classList.add('hidden')"
-                class="px-6 py-2 bg-white text-black-bg rounded-lg hover:bg-gray-200 transition duration-300">
-                Close
-            </button>
-        </div>
-    </div>
+    <!-- Custom Modal for GitHub URL is removed -->
     
     <!-- Footer -->
     <footer class="bg-card border-t border-white/10 mt-10 relative z-10">
@@ -367,9 +339,30 @@
         </div>
     </footer>
 
-    <!-- Initialize Lucide Icons -->
+    <!-- Initialize Lucide Icons and Parallax JS -->
     <script>
+        // Initialize Lucide Icons
         lucide.createIcons();
+
+        // SCROLL-BASED PARALLAX EFFECT (Enhanced to be much more obvious)
+        document.addEventListener('DOMContentLoaded', () => {
+            const parallaxElement = document.getElementById('parallax-dots');
+            
+            // Only attach listener if the element exists
+            if (parallaxElement) {
+                window.addEventListener('scroll', () => {
+                    // Get the vertical scroll position
+                    const scrollY = window.scrollY;
+                    
+                    // Calculate translation: moves at 30% (0.3) the speed of the foreground scroll.
+                    // This creates a much more noticeable and pronounced parallax effect.
+                    const translateY = scrollY * 0.3; 
+                    
+                    // Apply the translation
+                    parallaxElement.style.transform = `translateY(${translateY}px)`;
+                }, { passive: true }); // Use passive listener for better scroll performance
+            }
+        });
     </script>
 </body>
 </html>
