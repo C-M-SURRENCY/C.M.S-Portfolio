@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cayden surrency | computer engineering & it</title>
+    <title>cayden surrency | Computer and Reverse Engineer</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Import Inter for body/sans and Roboto Mono for the classic terminal aesthetic */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght=400;700&display=swap');
         
         .font-sans {
             font-family: 'Inter', sans-serif;
         }
-        /* New Code Font: Roboto Mono for a classic terminal look */
         .font-code-unique {
-            /* Prioritize Roboto Mono for a classic terminal feel, using Ubuntu Mono as a common system fallback */
             font-family: 'Roboto Mono', 'Ubuntu Mono', monospace;
-            letter-spacing: 0.05em; /* Subtle spacing to enhance code look */
+            letter-spacing: 0.05em;
         }
-        
-        /* Custom color definitions for high-contrast black/white theme */
         :root {
             --color-bg-primary: #000000;
             --color-text-primary: #FFFFFF;
-            --color-card-bg: #0A0A0A; /* Very dark grey for card depth */
-            --color-accent: #FFFFFF; /* Pure white accent */
+            --color-card-bg: #0A0A0A;
+            --color-accent: #FFFFFF;
         }
 
         .bg-primary { background-color: var(--color-bg-primary); }
@@ -37,13 +32,11 @@
         .border-accent { border-color: var(--color-accent); }
         .border-subtle { border-color: rgba(255, 255, 255, 0.1); }
         
-        /* Keyframe for subtle slide-in/fade-up animation */
         @keyframes slide-up-fade {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Utility classes for staggered animation effects (KEPT for Hero Section only) */
         .animate-slide-up-1 {
             animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
         }
@@ -56,26 +49,22 @@
         .animate-slide-up-4 {
             animation: slide-up-fade 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s forwards;
         }
-        /* Ensure animated items are invisible before they start */
         .animated-item { opacity: 0; }
         
-        /* Blinking Block Cursor Animation - Reverted to permanent visibility */
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
         .cursor-block {
             display: inline-block;
-            width: 0.6em; /* Width slightly less than a character */
-            height: 1.1em; /* Height of the font line */
+            width: 0.6em; 
+            height: 1.1em;
             background-color: white;
             margin-left: 0.1em;
             vertical-align: middle;
             animation: blink 1s step-end infinite;
-            /* Default opacity is now 1, allowing the animation to handle blinking */
         }
         
-        /* Removed all .section-title-hover-effect CSS */
     </style>
     <script>
         tailwind.config = {
@@ -89,7 +78,6 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        // Define the code mono font for specific use
                         code: ['Roboto Mono', 'Ubuntu Mono', 'monospace'], 
                     }
                 }
@@ -100,28 +88,22 @@
 
 <body class="bg-black-bg text-white min-h-screen font-sans antialiased">
 
-    <!-- PARALLAX BACKGROUND LAYER (Fixed position, scroll-controlled movement) -->
     <div class="fixed inset-0 pointer-events-none z-[-1] bg-black-bg">
-        <!-- Dot/Star Field Effect Container -->
         <div class="absolute inset-0 overflow-hidden">
             <div id="parallax-dots" class="absolute inset-0" style="
-                /* We still use 200% size for a large background area, but positioned top-left */
                 width: 200%; 
                 height: 200%;
                 top: -50%;
                 left: -50%;
-                /* Subtle pattern of white dots - Denser and slightly more visible now */
-                background-image: radial-gradient(white 1px, transparent 1px);
+                background-image: radial-gradient(white 3px, transparent 1px);
                 background-size: 50px 50px;
                 opacity: 0.1;
             "></div>
         </div>
     </div>
-    <!-- END PARALLAX BACKGROUND LAYER -->
 
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-black-bg/95 backdrop-blur-sm border-b border-white/10">
-        <!-- Kept initial slide-in for cleaner load -->
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center animated-item animate-slide-up-1">
             
             <!-- Logo: Initials "CS" -->
@@ -129,7 +111,6 @@
                 
                 <!-- SVG Logo: Initials "CS" for Cayden Surrency -->
                 <svg width="28" height="28" viewBox="0 0 100 100" class="w-7 h-7">
-                    <!-- Text element for the initials -->
                     <text x="50" y="65" 
                           font-family="monospace, sans-serif" 
                           font-size="60" 
@@ -180,20 +161,18 @@
             </div>
         </section>
 
-        <!-- Divider - Animation removed -->
+
         <div class="w-full h-px bg-white/10 my-20"></div>
 
-        <!-- 2. Expertise (Skills) Section - Animation removed from content -->
         <section id="expertise" class="py-16">
             <p class="text-lg uppercase tracking-widest text-gray-400 font-sans mb-4">01 | Core Expertise</p>
-            <!-- H3: Capitalized, animation and hover classes removed -->
             <h3 class="text-4xl font-semibold text-white mb-12">
-                Technical & Professional Proficiencies
+                Technical Proficiencies
             </h3>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <!-- Category 1: Systems & Hardware -->
+
                 <div class="bg-card p-6 rounded-xl border border-white/10 hover:border-white/50 transition duration-300">
                     <div class="flex items-center mb-4">
                         <i data-lucide="server" class="w-6 h-6 text-white mr-3"></i>
